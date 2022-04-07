@@ -1,0 +1,17 @@
+server:
+  port: 18080
+
+spring:
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/cfca?useSSL=false&characterEncoding=UTF-8
+    username: cfca
+    password: nand!123
+    driver-class-name: org.mariadb.jdbc.Driver
+    hikari:
+      autoCommit: false
+      connectionTimeout: 30000
+      idleTimeout: 30000
+      maxLifetime: 1800000
+      connectionTestQuery: SELECT 1
+      minimumIdle: 10
+      maximumPoolSize: 30

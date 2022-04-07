@@ -1,0 +1,1 @@
+INSERT INTO cfca_user(name) VALUES(/* user.name */))

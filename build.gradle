@@ -1,0 +1,46 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.6'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'com.avast.gradle.docker-compose' version '0.12.1'
+	id 'java'
+	id 'war'
+}
+
+group = 'kr.co.nandsoft.cfca'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.0.3'
+	implementation('org.seasar.doma.boot:doma-spring-boot-starter:1.6.0') {
+		exclude group: 'org.springframework.boot'
+	}
+
+	compileOnly 'org.projectlombok:lombok'
+
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	annotationProcessor 'org.seasar.doma.boot:doma-spring-boot-starter:1.6.0'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
+
+dockerCompose {
+	useComposeFiles = ['docker/docker-compose.yml']
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
