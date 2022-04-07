@@ -7,8 +7,12 @@ package kr.co.nandsoft.cfca.common;
  * Date: 2022-04-07
  * Time: 오후 5:25
  */
-public interface WebConst {
-    String WEBJARS_URL = "/webjars/**";
+public class WebConst {
 
-    String STATIC_RESOURCES_URL = "/static/**";
+    public WebConst() {}
+
+    public static String WEBJARS_URL = "/webjars/**";
+
+    public static String STATIC_RESOURCES_URL = "/static/**";
+
 }
